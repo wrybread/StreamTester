@@ -23,18 +23,19 @@ import socket
 
 
 
-# possibly add colored output
-#import colorama # pip install colorama
-#colorama.init()
-#print(colorama.Fore.RED + 'some red text')
-
-
 try:
     # Python 3
     from urllib.request import urlopen
 except ImportError:
     # Python 2
     from urllib2 import urlopen
+
+
+# possibly add colored output at some point
+#import colorama # pip install colorama
+#colorama.init()
+#print(colorama.Fore.RED + 'some red text')
+
 
 
 
@@ -114,7 +115,8 @@ def write(msg, msg_type, spacer=0, add_summary=1):
 current_directory = os.path.dirname(os.path.realpath(__file__)) # so the output log is in same directory as script
 error_log = os.path.join(current_directory, "rv_stream_tester_log.txt")
 
-tmp_file="output.mp3"
+tmp_file = os.path.join(current_directory, "rv_stream_tester_dummy_output.mp3")
+
 total_uptime=0
 total_downtime=0
 total_outages=0

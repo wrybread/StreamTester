@@ -1,0 +1,4 @@
+
+2020-05-05 01:57:14: Monitoring http://live.str3am.com:3010/live
+2020-05-05 01:57:14: Logging to D:\Projects\RV Stream Tester\rv_stream_tester_log.txt
+2020-05-05 01:57:15: Stream is up!
