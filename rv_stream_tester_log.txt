@@ -2,3 +2,12 @@
 2020-05-06 15:06:37: Monitoring http://live.str3am.com:3010/live with a timeout of 1 seconds
 2020-05-06 15:06:37: Logging to D:\Projects\RV Stream Tester\rv_stream_tester_log.txt
 2020-05-06 15:06:38: Stream is up!
+
+2020-05-06 15:12:44: Monitoring http://live.str3am.com:3010/live with a timeout of 1 seconds
+2020-05-06 15:12:44: Logging to D:\Projects\RV Stream Tester\rv_stream_tester_log.txt
+2020-05-06 15:12:45: Stream is up!
+2020-05-06 15:12:52: Done logging. (5 seconds uptime / 0 seconds downtime)
+
+2020-05-06 15:13:18: Monitoring http://live.str3am.com:3010/live with a timeout of 1 seconds
+2020-05-06 15:13:18: Logging to D:\Projects\RV Stream Tester\rv_stream_tester_log.txt
+2020-05-06 15:13:19: Stream is up!

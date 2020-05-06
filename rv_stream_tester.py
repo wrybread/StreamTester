@@ -153,7 +153,7 @@ while True:
                 if not chunk:
                     raise ValueError("No chunk was downloaded!")
                     break
-                fp.write(chunk)
+                #fp.write(chunk) # writing is disabled
                 
                 # download was a success! Keep track of totals and log it
                 total_uptime += int(time.time() - last_result_time)
