@@ -21,7 +21,7 @@ import os, sys
 import time
 import socket
 
-
+#import colorama # pip install colorama
 
 try:
     # Python 3
@@ -31,13 +31,6 @@ except ImportError:
     from urllib2 import urlopen
 
 
-# possibly add colored output at some point
-#import colorama # pip install colorama
-#colorama.init()
-#print(colorama.Fore.RED + 'some red text')
-
-
-
 
 
 
@@ -45,8 +38,10 @@ except ImportError:
 url = "http://live.str3am.com:3010/live"
 
 
-# set the timeout rate for urllib
-socket.setdefaulttimeout(.5)
+# Set the timeout for the stream. Somewhere between .5
+# and 2 seconds makes sense.
+timeout = 1
+
 
 
 
@@ -105,6 +100,11 @@ def write(msg, msg_type, spacer=0, add_summary=1):
 
 
 
+# possibly add colored output at some point
+#colorama.init()
+#print(colorama.Fore.YELLOW + 'some red text')
+#import termcolor
+#print(termcolor.colored('Hello, World!', 'green', 'on_red'), "asdf")
 
 
 #################
@@ -115,8 +115,7 @@ def write(msg, msg_type, spacer=0, add_summary=1):
 current_directory = os.path.dirname(os.path.realpath(__file__)) # so the output log is in same directory as script
 error_log = os.path.join(current_directory, "rv_stream_tester_log.txt")
 
-tmp_file = os.path.join(current_directory, "rv_stream_tester_dummy_output.mp3")
-
+tmp_file="output.mp3"
 total_uptime=0
 total_downtime=0
 total_outages=0
@@ -125,7 +124,10 @@ last_result_type=None
 last_success_time=0
 first_run=1
 
-write("Monitoring %s" % url, "log", spacer=1, add_summary=0)
+# set the timeout rate for urllib
+socket.setdefaulttimeout(timeout)
+
+write("Monitoring %s with a timeout of %s seconds" % (url, timeout), "log", spacer=1, add_summary=0)
 write("Logging to %s" % error_log, "log2", spacer=0, add_summary=0)
 
 ##############################################
@@ -159,7 +161,7 @@ while True:
                 if last_result_type == "error":
                     # it's back up after an outage, so figure out how long it was down
                     d = int(time.time() - last_success_time) # number of seconds it was down
-                    msg = "We're back after being down for %s!" % elapsed(d)
+                    msg = "Up after %s" % elapsed(d)
                 else:                 
                     msg = "Stream is up!"
                     add_spacer=0
@@ -186,7 +188,7 @@ while True:
             # this is a new outage (could trigger email or txt here)
             total_outages+=1
         
-        msg = "We're down (#%s)! (%s)" % (total_outages, str(e) )
+        msg = "Down (#%s) (%s)" % (total_outages, str(e) )
         write(msg, "error", spacer=1)
 
         last_result_time = time.time()
