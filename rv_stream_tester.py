@@ -50,13 +50,13 @@ timeout = 1
 ## helper functions
 #######################
 
-# format the timestamp
 def timestamp():
+    ''' Format the timestamp '''
     return time.strftime("%Y-%m-%d %H:%M:%S")
 
 
-# convert seconds to days:hours:minutes:seconds
 def elapsed(secs):
+    ''' Convert seconds to days:hours:minutes:seconds '''
 
     days = secs//86400
     hours = (secs - days*86400)//3600
@@ -75,9 +75,9 @@ def elapsed(secs):
     return o
 
 
-# output to log file and console. Spacer param adds extra hard return, add_summary adds total uptime and downtime.
 last_msg_type = None
 def write(msg, msg_type, spacer=0, add_summary=1):
+    ''' Write to console and log. If spacer=1 will add a hard return. If add_summary=1 will print total uptime/downtime. '''
 
     global last_msg_type
     
